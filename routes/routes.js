@@ -8,17 +8,13 @@ const Seed = require("../models/seed")
 const addSeed = require("./controllers/addSeed").addSeed
 
 //Routes
-router.post("/addUser", addSeed);
+router.post("/addSeed", addSeed);
 
 router.get('/', async(req, res) => {
-    let seeds = await Seed.find({})
-    try{
+  Seed.find({}).then((seeds)=>{
       res.send(seeds);
-    }
-    catch{
-      res.send('error occured');
-    }
-    
+      })
+
 });
 
 
